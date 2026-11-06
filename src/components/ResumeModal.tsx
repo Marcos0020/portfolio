@@ -249,6 +249,18 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                     Código: github.com/Marcos0020/MEUS_CODIGOS_BD_ORACLE
                   </p>
                 </div>
+
+                <div>
+                  <h3 className="font-bold text-slate-950">
+                    AgentCS-cybersecurity | IA Autônoma, Engenharia de Prompts e DevSecOps
+                  </h3>
+                  <p className="text-slate-700">
+                    Agente autônomo profissional para auditorias completas de segurança ofensiva e defensiva (SAST, SCA, APIs, infraestrutura), com blindagem anti-prompt injection, governança human-in-the-loop e relatórios técnicos automatizados.
+                  </p>
+                  <p className="text-[10.5px] font-mono text-sky-700">
+                    Código: github.com/Marcos0020/AgentCS-cybersecurity
+                  </p>
+                </div>
               </div>
             </div>
 

@@ -13,7 +13,7 @@ export interface Experience {
 
 export interface Project {
   title: string;
-  category: "Full Stack" | "Banco de Dados" | "Automação Python";
+  category: "Full Stack" | "Banco de Dados" | "Automação Python" | "IA & Segurança";
   description: string;
   problemSolved: string;
   technologies: string[];
@@ -80,7 +80,7 @@ export const portfolioData = {
       { label: "Anos de Experiência em TI", value: "4+" },
       { label: "Anos com Oracle em Produção", value: "3+" },
       { label: "SGBDs Relacionais", value: "4" },
-      { label: "Projetos no GitHub", value: "3" },
+      { label: "Projetos no GitHub", value: "4" },
     ],
   },
 
@@ -187,6 +187,22 @@ export const portfolioData = {
       ],
       githubUrl: "https://github.com/Marcos0020/automacoes-processos-python",
       highlightBadge: "Desktop & Scripts",
+    },
+    {
+      title: "AgentCS — Agente Autônomo de Cibersegurança & DevSecOps",
+      category: "IA & Segurança",
+      description: "Agente autônomo profissional baseado em IA para condução de auditorias completas de segurança ofensiva e defensiva, com cobertura integral das 10 categorias OWASP, análise estática de código (SAST) e composição de software (SCA).",
+      problemSolved: "Prevenção de vulnerabilidades críticas em sistemas e APIs antes do deploy, com blindagem multicamadas contra ataques de Prompt Injection e governança estrita Human-in-the-Loop.",
+      technologies: ["Engenharia de Prompts", "Claude / Antigravity", "SAST", "SCA", "OWASP Top 10", "DevSecOps", "Shell Script", "Python"],
+      features: [
+        "Blindagem multicamadas contra Prompt Injection tratando código auditado como dado não-confiável",
+        "Arquitetura modular extensível com 8 skills especializadas (SAST, SCA, APIs, Auth, Infra)",
+        "Fluxo com governança Human-in-the-Loop (nenhuma alteração executada sem autorização expressa)",
+        "Geração automatizada de relatórios técnicos em dois formatos: Júnior (didático) e Sênior (executivo/CVSS)",
+        "Protocolo estrito de 6 passos para contenção de escopo e aplicação cirúrgica de correções",
+      ],
+      githubUrl: "https://github.com/Marcos0020/AgentCS-cybersecurity",
+      highlightBadge: "IA & Cibersegurança",
     },
   ] as Project[],
 

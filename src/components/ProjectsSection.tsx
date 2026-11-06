@@ -8,7 +8,7 @@ export const ProjectsSection: React.FC = () => {
   const { projects } = portfolioData;
   const [activeFilter, setActiveFilter] = useState<string>('Todos');
 
-  const categories = ['Todos', 'Full Stack', 'Banco de Dados', 'Automação Python'];
+  const categories = ['Todos', 'Full Stack', 'Banco de Dados', 'Automação Python', 'IA & Segurança'];
 
   const filteredProjects = activeFilter === 'Todos'
     ? projects
@@ -46,7 +46,7 @@ export const ProjectsSection: React.FC = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project: Project, idx: number) => (
             <div
               key={idx}
