@@ -140,7 +140,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                   <strong className="text-slate-950 font-bold">Desenvolvimento de Software:</strong> Python, Node.js, NestJS, TypeScript, JavaScript, React, Vite, Tailwind CSS, Zustand, APIs REST, JWT e IMAP.
                 </p>
                 <p>
-                  <strong className="text-slate-950 font-bold">Suporte e Infraestrutura:</strong> Service Desk, suporte técnico N2, gestão de chamados com GLPI, troubleshooting de conectividade, Docker, Linux (Ubuntu) e VMs.
+                  <strong className="text-slate-950 font-bold">Suporte e Infraestrutura:</strong> Service Desk, suporte técnico N2, gestão de chamados com GLPI, troubleshooting de conectividade, Docker, Linux e Ubuntu Linux.
                 </p>
                 <p>
                   <strong className="text-slate-950 font-bold">Ferramentas:</strong> Git, GitHub, PL/SQL Developer e DBeaver.
