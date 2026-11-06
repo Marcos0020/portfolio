@@ -38,7 +38,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
                 {personal.name}
               </h1>
               <h2 className="mt-3 text-2xl sm:text-3xl font-bold bg-gradient-to-r from-sky-400 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
-                Analista de Banco de Dados & Desenvolvedor PL/SQL
+                Analista de Banco de Dados & Desenvolvedor PL/SQL | Suporte N1/N2
               </h2>
             </div>
 

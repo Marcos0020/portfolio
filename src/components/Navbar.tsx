@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResumeModal }) => {
             <span className="font-bold text-base text-slate-100 tracking-tight flex items-center gap-1">
               Marcos Sousa <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
             </span>
-            <span className="text-[11px] font-mono text-slate-400">Analista de Banco de Dados · Dev SQL/PL-SQL</span>
+            <span className="text-[11px] font-mono text-slate-400">Analista de Banco de Dados · Dev SQL/PL-SQL · Suporte N1/N2</span>
           </div>
         </a>
 

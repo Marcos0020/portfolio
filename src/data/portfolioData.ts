@@ -60,7 +60,7 @@ export const portfolioData = {
   personal: {
     name: "Marcos Sousa",
     fullName: "Marcos Vinicius dos Santos Sousa",
-    title: "Analista de Banco de Dados & Desenvolvedor SQL / PL/SQL",
+    title: "Analista de Banco de Dados & Desenvolvedor SQL / PL/SQL | Suporte N1/N2",
     subtitles: [
       "Especialista em Oracle Database em Produção",
       "Desenvolvedor SQL / PL/SQL & Automação",
