@@ -97,6 +97,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </div>
 
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-sky-700 font-mono mt-1 font-semibold">
+                <a href={personal.portfolioUrl} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-0.5 text-cyan-600 font-bold">
+                  portfolio-mu-nine-dtfoagovym.vercel.app <ExternalLink className="w-2.5 h-2.5 text-slate-400 no-print" />
+                </a>
+                <span>•</span>
                 <a href={personal.github} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-0.5">
                   github.com/Marcos0020 <ExternalLink className="w-2.5 h-2.5 text-slate-400 no-print" />
                 </a>

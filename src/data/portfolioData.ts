@@ -72,6 +72,7 @@ export const portfolioData = {
     email: "mmarcosssousa@gmail.com",
     phone: "(21) 97697-5370",
     phoneClean: "5521976975370",
+    portfolioUrl: "https://portfolio-mu-nine-dtfoagovym.vercel.app",
     linkedin: "https://linkedin.com/in/marcos-sousa-150929226",
     github: "https://github.com/Marcos0020",
     bio: "Analista de Tecnologia com mais de 3 anos de experiência prática e comprovada em desenvolvimento, sustentação e operação em ambientes Oracle Database de missão crítica, somados a sólida vivência em Service Desk e suporte técnico N1/N2. Perfil analítico e resolutivo, com capacidade de transitar da camada de infraestrutura e redes até o núcleo de regras de negócio em PL/SQL e automações com Python e IA.",
