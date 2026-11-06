@@ -207,10 +207,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </div>
             </div>
 
-            {/* 5. Projetos Independentes */}
+            {/* 5. Projetos */}
             <div className="mb-5">
               <h2 className="text-xs font-bold uppercase tracking-wider text-sky-800 border-b border-slate-300 pb-1 mb-2.5 section-title">
-                Projetos Independentes
+                Projetos
               </h2>
 
               <div className="space-y-3 text-[11.5px] text-slate-800">
