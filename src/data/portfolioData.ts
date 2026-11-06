@@ -248,6 +248,14 @@ export const portfolioData = {
       iconName: "Monitor",
     },
     {
+      name: "Claude Code (Anthropic)",
+      category: "IDEs & Ambientes com IA",
+      provider: "Anthropic",
+      description: "Ferramenta agentic oficial via linha de comando (CLI) da Anthropic, com certificação oficial Claude Code 101, voltada à refatoração e engenharia de software.",
+      howIUse: "Desenvolvimento assistido por terminal, refatoração de bases de código, criação de automações e resolução ágil de tarefas técnicas diretamente no fluxo de trabalho.",
+      iconName: "Terminal",
+    },
+    {
       name: "Vercel",
       category: "Hospedagem & Deploy",
       provider: "Vercel Inc.",
