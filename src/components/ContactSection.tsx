@@ -4,9 +4,20 @@ import { Mail, Phone, MapPin, Send, FileText, Check, Copy, MessageSquare, Loader
 import { portfolioData } from '../data/portfolioData';
 import { LinkedinIcon, GithubIcon } from './Icons';
 
-const EMAILJS_SERVICE_ID  = 'service_rrfebdr';
-const EMAILJS_TEMPLATE_ID = 'template_zidoxl8';
-const EMAILJS_PUBLIC_KEY  = '3VlQqyA9LbqUth3_9';
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || 'service_rrfebdr';
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_zidoxl8';
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || '3VlQqyA9LbqUth3_9';
+
+const RATE_LIMIT_SECONDS = 45;
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+
+// Sanitização básica contra injeções de tags e caracteres de controle
+const sanitizeInput = (val: string): string => {
+  return val
+    .replace(/\0/g, '')
+    .replace(/[<>]/g, '')
+    .trim();
+};
 
 interface ContactSectionProps {
   onOpenResumeModal: () => void;
@@ -23,6 +34,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenResumeModa
     email: '',
     subject: '',
     message: '',
+    honeypot: '', // Campo armadilha para bots
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
@@ -41,23 +53,72 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenResumeModa
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSending(true);
     setSendError('');
+
+    // 1. Defesa Anti-Bot (Honeypot Triggered)
+    // Se o bot preencheu o campo invisível, simulamos sucesso silenciosamente (drop sem gastar cota)
+    if (formState.honeypot.trim() !== '') {
+      setIsSending(true);
+      setTimeout(() => {
+        setIsSending(false);
+        setFormSubmitted(true);
+      }, 600);
+      return;
+    }
+
+    // 2. Sanitização e Validação Estrita de Input
+    const cleanName = sanitizeInput(formState.name);
+    const cleanEmail = formState.email.trim();
+    const cleanSubject = sanitizeInput(formState.subject);
+    const cleanMessage = sanitizeInput(formState.message);
+
+    if (cleanName.length < 2) {
+      setSendError('Por favor, informe seu nome com pelo menos 2 caracteres.');
+      return;
+    }
+
+    if (!EMAIL_REGEX.test(cleanEmail)) {
+      setSendError('Por favor, insira um endereço de e-mail válido.');
+      return;
+    }
+
+    if (cleanMessage.length < 5) {
+      setSendError('A mensagem deve conter pelo menos 5 caracteres.');
+      return;
+    }
+
+    // 3. Rate Limiting Client-Side (Cooldown de 45s)
+    const now = Date.now();
+    const lastSent = localStorage.getItem('last_contact_sent_at');
+    if (lastSent) {
+      const elapsedSeconds = Math.floor((now - parseInt(lastSent, 10)) / 1000);
+      if (elapsedSeconds < RATE_LIMIT_SECONDS) {
+        const remaining = RATE_LIMIT_SECONDS - elapsedSeconds;
+        setSendError(`Aguarde ${remaining}s antes de enviar uma nova mensagem.`);
+        return;
+      }
+    }
+
+    setIsSending(true);
 
     try {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          name:    formState.name,
-          email:   formState.email,
-          subject: formState.subject || 'Oportunidade Profissional',
-          message: formState.message,
+          name:    cleanName,
+          email:   cleanEmail,
+          subject: cleanSubject || 'Oportunidade Profissional',
+          message: cleanMessage,
         },
         EMAILJS_PUBLIC_KEY
       );
+
+      // Registra timestamp do envio bem-sucedido
+      localStorage.setItem('last_contact_sent_at', String(Date.now()));
+
       setFormSubmitted(true);
-      setFormState({ name: '', email: '', subject: '', message: '' });
+      setFormState({ name: '', email: '', subject: '', message: '', honeypot: '' });
     } catch (err) {
       console.error('[EmailJS] Erro ao enviar:', err);
       setSendError('Falha ao enviar. Tente novamente ou use o e-mail direto.');
@@ -219,6 +280,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenResumeModa
                 </div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+                  {/* Honeypot field (invisível para humanos, armadilha para bots) */}
+                  <div className="opacity-0 pointer-events-none absolute -left-[9999px] -top-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+                    <label htmlFor="hp_company_website">Não preencha este campo se você for humano:</label>
+                    <input
+                      id="hp_company_website"
+                      type="text"
+                      name="hp_company_website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formState.honeypot}
+                      onChange={(e) => setFormState({ ...formState, honeypot: e.target.value })}
+                    />
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-mono text-slate-400 mb-1.5">
@@ -227,6 +302,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenResumeModa
                       <input
                         type="text"
                         required
+                        maxLength={100}
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                         placeholder="Ex: Ana Silva / Tech Recruiter"
@@ -240,6 +316,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenResumeModa
                       <input
                         type="email"
                         required
+                        maxLength={120}
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                         placeholder="seu.email@empresa.com"
@@ -254,6 +331,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenResumeModa
                     </label>
                     <input
                       type="text"
+                      maxLength={150}
                       value={formState.subject}
                       onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
                       placeholder="Ex: Oportunidade para Analista de Banco de Dados"
@@ -268,6 +346,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenResumeModa
                     <textarea
                       rows={4}
                       required
+                      maxLength={2500}
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       placeholder="Descreva a vaga ou projeto que gostaria de conversar comigo..."

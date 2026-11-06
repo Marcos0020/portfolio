@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
           <p>
-            © {new Date().getFullYear()} Marcos Sousa. Todos os direitos reservados.
+            © 2026 Marcos Sousa. Todos os direitos reservados.
           </p>
           <p className="font-mono text-slate-500">
             Desenvolvido com React, TypeScript & Tailwind CSS

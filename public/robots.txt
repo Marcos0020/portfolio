@@ -1,0 +1,21 @@
+# Robots.txt - Marcos Sousa Portfolio
+# Permite rastreamento por motores de busca e redes profissionais
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Bloqueio de crawlers agressivos / bots de extração não autorizada
+User-agent: PetalBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap
+Sitemap: https://portfolio-mu-nine-dtfoagovym.vercel.app/sitemap.xml
