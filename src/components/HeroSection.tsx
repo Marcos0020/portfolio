@@ -43,7 +43,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
             </div>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
-              Profissional de TI com mais de <strong className="text-white font-semibold">3 anos de experiência prática em Oracle Database corporativo em produção</strong> e histórico estruturado em <strong className="text-white font-semibold">Service Desk N1/N2 e sustentação</strong>. Especialista em resolução de problemas, unindo banco relacional, rotinas PL/SQL, automação em Python e IA aplicada ao desenvolvimento de software.
+              Profissional de TI com mais de <strong className="text-white font-semibold">3 anos de experiência prática em Oracle Database em ambiente corporativo de produção</strong> e trajetória profissional em <strong className="text-white font-semibold">Análise de Suporte N1/N2 e sustentação de sistemas</strong>. Experiência em atendimentos presenciais e remotos, utilizando ferramentas como AnyDesk e TeamViewer, solucionando problemas de hardware, software e redes de computadores. Vivência com GLPI para abertura, registro e acompanhamento de chamados por e-mail e telefone, incluindo classificação de complexidade e definição de níveis de prioridade. Especialista em resolução de problemas, integrando conhecimentos em bancos de dados relacionais, rotinas PL/SQL, automação com Python e inteligência artificial aplicada ao desenvolvimento de software.
             </p>
 
             <div className="flex flex-wrap gap-2 pt-1">
