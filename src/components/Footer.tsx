@@ -11,45 +11,67 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#050811] border-t border-[#172042] py-12 text-slate-500 text-xs">
+    <footer className="bg-[#050811] border-t border-[#162040] py-12 text-zinc-400 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#172042]">
+        
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#162040]">
+          
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-[#0c1221] border border-[#172042] flex items-center justify-center text-blue-400">
+            <div className="w-8 h-8 rounded-lg bg-[#111a30] border border-[#172042] flex items-center justify-center text-zinc-300">
               <Database className="w-4 h-4" />
             </div>
             <div>
               <span className="font-semibold text-white text-sm">Marcos Sousa</span>
-              <p className="text-[11px] text-slate-500 font-mono">
-                Banco de Dados Oracle · SQL &amp; PL/SQL · Suporte N2 · Automação
+              <p className="text-[11px] text-zinc-400 font-mono">
+                Banco de Dados Oracle · SQL & PL/SQL · Suporte N2 · Automação
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2.5">
-            <a href={personal.github} target="_blank" rel="noopener noreferrer"
-              className="p-2 rounded-xl bg-[#0c1221] border border-[#172042] hover:border-blue-500/30 text-slate-400 hover:text-blue-400 transition-colors" title="GitHub">
+            <a
+              href={personal.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg bg-[#0e1628] border border-[#172042] hover:border-zinc-500 text-zinc-400 hover:text-white transition-colors"
+              title="GitHub"
+            >
               <GithubIcon className="w-4 h-4" />
             </a>
-            <a href={personal.linkedin} target="_blank" rel="noopener noreferrer"
-              className="p-2 rounded-xl bg-[#0c1221] border border-[#172042] hover:border-blue-500/30 text-slate-400 hover:text-blue-400 transition-colors" title="LinkedIn">
+            <a
+              href={personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg bg-[#0e1628] border border-[#172042] hover:border-zinc-500 text-zinc-400 hover:text-white transition-colors"
+              title="LinkedIn"
+            >
               <LinkedinIcon className="w-4 h-4" />
             </a>
-            <a href={`mailto:${personal.email}`}
-              className="p-2 rounded-xl bg-[#0c1221] border border-[#172042] hover:border-blue-500/30 text-slate-400 hover:text-blue-400 transition-colors" title="E-mail">
+            <a
+              href={`mailto:${personal.email}`}
+              className="p-2 rounded-lg bg-[#0e1628] border border-[#172042] hover:border-zinc-500 text-zinc-400 hover:text-white transition-colors"
+              title="E-mail"
+            >
               <Mail className="w-4 h-4" />
             </a>
-            <button onClick={scrollToTop}
-              className="p-2 px-3 rounded-xl bg-[#0c1221] hover:bg-[#111a30] text-slate-300 hover:text-white border border-[#172042] hover:border-blue-500/30 transition-all flex items-center gap-1.5 font-mono text-[11px]" title="Voltar ao Topo">
+            <button
+              onClick={scrollToTop}
+              className="p-2 px-3 rounded-lg bg-[#0e1628] hover:bg-[#162040] text-zinc-300 hover:text-white border border-[#172042] hover:border-zinc-500 transition-all flex items-center gap-1.5 font-mono text-[11px]"
+              title="Voltar ao Topo"
+            >
               <ArrowUp className="w-3.5 h-3.5" /> Topo
             </button>
           </div>
+
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-600">
-          <p>© 2026 Marcos Sousa. Todos os direitos reservados.</p>
-          <p className="font-mono">Desenvolvido com React, TypeScript &amp; Tailwind CSS</p>
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-zinc-400">
+          <p>
+            © 2026 Marcos Sousa. Todos os direitos reservados.
+          </p>
+          <p className="font-mono text-zinc-400">
+            Desenvolvido com React, TypeScript & Tailwind CSS
+          </p>
         </div>
 
       </div>

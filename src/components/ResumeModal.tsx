@@ -20,17 +20,17 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#040711]/90 backdrop-blur-lg flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200">
       
       {/* Modal Dialog Card */}
-      <div className="bg-[#0c1221] border border-[#172042] rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-card overflow-hidden relative">
+      <div className="bg-[#0c1221] border border-[#172042] rounded-xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-card overflow-hidden relative">
         
         {/* Top Control Bar (Hidden on print) */}
-        <div className="p-3.5 sm:p-4 px-4 sm:px-6 border-b border-[#172042] flex items-center justify-between bg-[#0a0f1e] no-print">
-          <div className="flex items-center gap-2 text-slate-300 font-mono text-xs">
-            <Database className="w-4 h-4 text-blue-400 shrink-0" />
+        <div className="p-3.5 sm:p-4 px-4 sm:px-6 border-b border-[#172042] flex items-center justify-between bg-[#080d1a] no-print">
+          <div className="flex items-center gap-2 text-zinc-300 font-mono text-xs">
+            <Database className="w-4 h-4 text-zinc-400 shrink-0" />
             <span className="font-semibold text-white text-xs sm:text-sm">Currículo Profissional</span>
-            <span className="hidden md:inline text-slate-500">| Versão Oficial A4</span>
+            <span className="hidden md:inline text-zinc-500">| Versão Oficial A4</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -38,7 +38,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <a
               href="/Curriculo_Marcos_Sousa.pdf"
               download="Curriculo_Marcos_Sousa.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-blue-sm transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-semibold shadow-subtle transition-all"
               title="Baixar arquivo PDF original do currículo"
             >
               <Download className="w-3.5 h-3.5" />
@@ -48,17 +48,17 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             {/* Print / Save as PDF Button — opens the official PDF in a new tab */}
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#0e1628] hover:bg-[#111a30] text-slate-300 hover:text-white text-xs font-medium border border-[#172042] transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#111a30] hover:bg-[#162040] text-zinc-300 hover:text-white text-xs font-medium border border-[#172042] transition-colors"
               title="Abrir PDF oficial para impressão"
             >
-              <Printer className="w-3.5 h-3.5 text-blue-400/60" />
+              <Printer className="w-3.5 h-3.5 text-zinc-400" />
               <span className="hidden sm:inline">Imprimir PDF</span>
             </button>
 
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-xl hover:bg-[#111a30] text-slate-400 hover:text-white transition-colors"
+              className="p-1.5 rounded-md hover:bg-[#162040] text-zinc-400 hover:text-white transition-colors"
               aria-label="Fechar"
             >
               <X className="w-5 h-5" />
@@ -67,7 +67,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Scrollable Printable Document Container */}
-        <div className="overflow-y-auto p-4 sm:p-6 md:p-8 bg-[#070b18]">
+        <div className="overflow-y-auto p-4 sm:p-6 md:p-8 bg-[#050811]">
           
           <div
             id="resume-printable"
@@ -305,14 +305,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Modal Bottom Bar (Hidden on print) */}
-        <div className="p-3 sm:p-4 px-6 border-t border-[#172042] flex items-center justify-between bg-[#0a0f1e] no-print">
-          <span className="text-[11px] text-slate-500 font-mono hidden sm:inline">
+        <div className="p-3 sm:p-4 px-6 border-t border-slate-800 flex items-center justify-between bg-slate-950/90 no-print">
+          <span className="text-[11px] text-slate-400 font-mono hidden sm:inline">
             Use "Baixar PDF Oficial" para salvar ou "Imprimir PDF" para imprimir.
           </span>
           <div className="flex items-center gap-2 ml-auto">
             <button
               onClick={onClose}
-              className="px-4 py-1.5 rounded-xl bg-[#0e1628] border border-[#172042] hover:border-blue-500/30 text-xs font-semibold text-white transition-colors"
+              className="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white transition-colors"
             >
               Fechar
             </button>
