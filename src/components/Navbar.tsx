@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResumeModal }) => {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1 bg-[#0f1118]/80 px-3 py-1.5 rounded-lg border border-[#232838] backdrop-blur-sm">
+        <nav className="hidden lg:flex items-center gap-1 bg-[#0f1118]/80 px-3 py-1.5 rounded-lg border border-[#232838] backdrop-blur-sm mr-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
