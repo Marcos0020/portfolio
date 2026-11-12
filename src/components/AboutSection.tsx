@@ -26,7 +26,7 @@ export const AboutSection: React.FC = () => {
       icon: <ShieldCheck className="w-5 h-5 text-zinc-300" />,
       title: "Service Desk N1/N2 & Infraestrutura",
       description:
-        "Histórico estruturado em suporte corporativo presencial e remoto: triagem e gestão de chamados com GLPI, diagnóstico de hardware, redes locais e troubleshooting avançado de conectividade (TNS, Listener e Firewall).",
+        "Experiência em atendimentos presenciais e remotos, utilizando ferramentas como AnyDesk e TeamViewer, solucionando problemas de hardware, software e redes de computadores. Vivência com GLPI para abertura, registro e acompanhamento de chamados por e-mail e telefone, incluindo classificação de complexidade e definição de níveis de prioridade.",
       badge: "Resolução de Incidentes",
       index: "03",
     },
@@ -69,7 +69,7 @@ export const AboutSection: React.FC = () => {
               Sou graduado em <strong className="text-white font-medium">Análise e Desenvolvimento de Sistemas</strong> pela Universidade Estácio de Sá (concluído em 2026), com atuação profissional centrada na sustentação de ambientes tecnológicos e desenvolvimento com banco de dados Oracle.
             </p>
             <p>
-              Minha trajetória combina duas bases complementares: a vivência no suporte técnico corporativo e Service Desk na <strong className="text-white font-medium">Defensoria Pública do Estado do Rio de Janeiro (DPRJ)</strong> — onde atuei em campo com GLPI, diagnóstico de hardware e redes — e a atuação sólida como Analista de Banco de Dados na <strong className="text-white font-medium">Inside Technology</strong>, gerenciando ambientes <strong className="text-white font-medium">Oracle Database em produção</strong> por mais de 3 anos.
+              Minha trajetória combina duas bases complementares: a atuação sólida como Analista de Banco de Dados na <strong className="text-white font-medium">Inside Technology</strong>, gerenciando ambientes <strong className="text-white font-medium">Oracle Database em produção</strong> por mais de 3 anos, e a trajetória profissional em <strong className="text-white font-medium">Análise de Suporte N1/N2 e Service Desk na Defensoria Pública do Estado do Rio de Janeiro (DPRJ)</strong>. Nessa atuação, consolidei <strong className="text-white font-medium">experiência em atendimentos presenciais e remotos, utilizando ferramentas como AnyDesk e TeamViewer, solucionando problemas de hardware, software e redes de computadores</strong>, somada a sólida <strong className="text-white font-medium">vivência com GLPI para abertura, registro e acompanhamento de chamados por e-mail e telefone, incluindo classificação de complexidade e definição de níveis de prioridade</strong>.
             </p>
             <p>
               Esse histórico me concede um diferencial que poucos especialistas em banco possuem: a capacidade de entender a dor real do usuário final na ponta, rastrear o caminho do pacote pela rede e firewall, e solucionar gargalos complexos diretamente na procedure ou na consulta SQL dentro do banco de dados.
