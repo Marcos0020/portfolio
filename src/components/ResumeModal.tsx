@@ -23,14 +23,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200">
       
       {/* Modal Dialog Card */}
-      <div className="bg-slate-900 border border-sky-500/30 rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden relative">
+      <div className="bg-[#0e1017] border border-[#232838] rounded-xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-card overflow-hidden relative">
         
         {/* Top Control Bar (Hidden on print) */}
-        <div className="p-3.5 sm:p-4 px-4 sm:px-6 border-b border-slate-800 flex items-center justify-between bg-slate-950/90 no-print">
-          <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs">
-            <Database className="w-4 h-4 text-sky-400 shrink-0" />
-            <span className="font-bold text-white text-xs sm:text-sm">Currículo Profissional</span>
-            <span className="hidden md:inline text-slate-500">| Versão Completa Impressa</span>
+        <div className="p-3.5 sm:p-4 px-4 sm:px-6 border-b border-[#232838] flex items-center justify-between bg-[#0a0b10] no-print">
+          <div className="flex items-center gap-2 text-zinc-300 font-mono text-xs">
+            <Database className="w-4 h-4 text-zinc-400 shrink-0" />
+            <span className="font-semibold text-white text-xs sm:text-sm">Currículo Profissional</span>
+            <span className="hidden md:inline text-zinc-500">| Versão Oficial A4</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -38,7 +38,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <a
               href="/Curriculo_Marcos_Sousa.pdf"
               download="Curriculo_Marcos_Sousa.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-sky-500 to-cyan-500 hover:brightness-110 text-slate-950 text-xs font-bold shadow-md shadow-sky-500/20 transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-semibold shadow-subtle transition-all"
               title="Baixar arquivo PDF original do currículo"
             >
               <Download className="w-3.5 h-3.5" />
@@ -48,17 +48,17 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             {/* Print / Save as PDF Button — opens the official PDF in a new tab */}
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#141722] hover:bg-[#1a1e2c] text-zinc-300 hover:text-white text-xs font-medium border border-[#232838] transition-colors"
               title="Abrir PDF oficial para impressão"
             >
-              <Printer className="w-3.5 h-3.5" />
+              <Printer className="w-3.5 h-3.5 text-zinc-400" />
               <span className="hidden sm:inline">Imprimir PDF</span>
             </button>
 
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
+              className="p-1.5 rounded-md hover:bg-[#1a1e2c] text-zinc-400 hover:text-white transition-colors"
               aria-label="Fechar"
             >
               <X className="w-5 h-5" />
@@ -67,7 +67,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Scrollable Printable Document Container */}
-        <div className="overflow-y-auto p-4 sm:p-6 md:p-8 bg-slate-950/40">
+        <div className="overflow-y-auto p-4 sm:p-6 md:p-8 bg-[#07080c]">
           
           <div
             id="resume-printable"
