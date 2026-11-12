@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,120 +8,125 @@
   html {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     color-scheme: dark;
-    background-color: #090a0f;
+    background-color: #080910;
+    scroll-behavior: smooth;
   }
 
   body {
-    background-color: #090a0f;
-    color: #e4e4e7;
+    background-color: #080910;
+    color: #d4d4d8;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 7px;
-}
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #080910; }
+::-webkit-scrollbar-thumb { background: #1e2233; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #2e3447; }
 
-::-webkit-scrollbar-track {
-  background: #090a0f;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #232838;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #38bdf8;
-}
-
-/* Architectural Engineering Grid */
+/* ─── Grid de fundo sutil ────────────────────────────────────── */
 .bg-subtle-grid {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 36px 36px;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
-/* Bespoke Editorial Surface */
+/* ─── Superfície editorial matte ─────────────────────────────── */
 .editorial-panel {
-  background: #0f1118;
-  border: 1px solid #232838;
-  border-radius: 14px;
+  background: #0c0e18;
+  border: 1px solid #1c2030;
+  border-radius: 10px;
 }
 
-.editorial-panel-hover {
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.editorial-panel-hover:hover {
-  border-color: #3b4259;
-}
-
-/* Backward-compatible glass-panel class remapped to clean matte editorial surface */
+/* ─── Backward compat ────────────────────────────────────────── */
 .glass-panel {
-  background: #0f1118;
-  border: 1px solid #232838;
+  background: #0c0e18;
+  border: 1px solid #1c2030;
 }
-
 .glass-panel-hover {
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
-
 .glass-panel-hover:hover {
-  border-color: #3b4259;
-  background-color: #131620;
+  border-color: #2e3447;
+  background-color: #101422;
 }
 
-/* Minimalist Monospace Tech Tag */
+/* ─── Tech tag: monospace inline pill ───────────────────────── */
 .tech-tag {
-  background: #141722;
-  border: 1px solid #232838;
-  color: #a1a1aa;
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
+  background: #0e1020;
+  border: 1px solid #1c2030;
+  color: #7c8099;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.69rem;
   letter-spacing: -0.01em;
-  padding: 0.22rem 0.55rem;
-  border-radius: 6px;
+  padding: 0.18rem 0.48rem;
+  border-radius: 4px;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
   transition: all 0.15s ease;
 }
-
 .tech-tag:hover {
   border-color: #38bdf8;
-  color: #f4f4f5;
-  background: #191d2c;
+  color: #e4e4e7;
+  background: #131a2e;
 }
 
-/* Section Monospace Indicator Badge */
+/* ─── Section badge: label de seção ─────────────────────────── */
 .section-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.25rem 0.65rem;
-  border-radius: 6px;
-  background: #131622;
-  border: 1px solid #232838;
-  color: #a1a1aa;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
+  padding: 0.18rem 0.55rem;
+  border-radius: 4px;
+  background: #0c0e18;
+  border: 1px solid #1c2030;
+  color: #515570;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-/* Print Stylesheet - Resolves page overflow and isolates clean printable resume */
+/* ─── Linha separadora com fade ─────────────────────────────── */
+.divider-fade {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #1c2030 30%, #1c2030 70%, transparent);
+}
+
+/* ─── Hover lift sutil ───────────────────────────────────────── */
+.hover-lift {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-1px);
+  border-color: #2a3050;
+}
+
+/* ─── Focus ring acessível ───────────────────────────────────── */
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+/* ─── Print: currículo em PDF ────────────────────────────────── */
 @media print {
   @page {
     size: A4 portrait;
     margin: 10mm 14mm 10mm 14mm;
   }
 
-  /* Hide the rest of the site */
-  header, footer, nav, main, #inicio, #sobre, #experiencia, #projetos, #ia-tools, #skills, #formacao, #contato {
+  header, footer, nav, main,
+  #inicio, #sobre, #experiencia, #projetos,
+  #ia-tools, #skills, #formacao, #contato {
     display: none !important;
   }
 
@@ -129,14 +136,12 @@
     font-size: 11pt;
   }
 
-  /* Hide modal overlays, close buttons and print buttons */
   .no-print,
   button,
   .modal-backdrop {
     display: none !important;
   }
 
-  /* Show only the printable container */
   #resume-printable {
     display: block !important;
     box-shadow: none !important;
