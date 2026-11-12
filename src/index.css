@@ -2,131 +2,278 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: light;
+  --paper: #f5f3ed;
+  --paper-strong: #fffefa;
+  --ink: #202322;
+  --ink-soft: #555b57;
+  --ink-muted: #747b75;
+  --line: #d9d9d1;
+  --accent: #23675e;
+  --accent-soft: #e5eee8;
+  --warm: #e9e3d7;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Inter, 'Helvetica Neue', Arial, sans-serif;
+}
+
 @layer base {
   html {
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0B132B;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #1E2D56;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #38BDF8;
-}
-
-/* Glassmorphism Classes */
-.glass-panel {
-  background: rgba(17, 28, 56, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(56, 189, 248, 0.15);
-}
-
-.glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-panel-hover:hover {
-  border-color: rgba(56, 189, 248, 0.4);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.2);
-}
-
-/* Code Badge */
-.tech-tag {
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  color: #7dd3fc;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  transition: all 0.2s ease;
-}
-
-.tech-tag:hover {
-  background: rgba(56, 189, 248, 0.18);
-  border-color: rgba(56, 189, 248, 0.5);
-  color: #38bdf8;
-}
-
-/* Radial Gradient Background Accent */
-.bg-radial-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12) 0%, rgba(11, 19, 43, 0) 70%);
-}
-
-/* Print Stylesheet - Resolves the 16-page overflow and isolates the clean resume */
-@media print {
-  @page {
-    size: A4 portrait;
-    margin: 10mm 14mm 10mm 14mm;
-  }
-
-  /* Hide the rest of the site */
-  header, footer, nav, main, #inicio, #sobre, #experiencia, #projetos, #ia-tools, #skills, #formacao, #contato {
-    display: none !important;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    font-family: var(--sans);
+    background: var(--paper);
   }
 
   body {
-    background: #ffffff !important;
-    color: #111827 !important;
-    font-size: 11pt;
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  /* Hide modal overlays, close buttons and print buttons */
-  .no-print,
-  button,
-  .modal-backdrop {
-    display: none !important;
-  }
+  ::selection { background: #c8ddd3; color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+}
 
-  /* Show only the printable container */
-  #resume-printable {
-    display: block !important;
-    position: static !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    background: #ffffff !important;
-    color: #111827 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    border: none !important;
-  }
+#root { min-height: 100vh; }
 
-  #resume-printable * {
-    color: #111827 !important;
-    text-shadow: none !important;
-    box-shadow: none !important;
-  }
+/* A quiet editorial canvas replaces the original dark, neon-heavy skin. */
+.bg-darkBg { background-color: var(--paper) !important; }
+.bg-darkBg\/95 { background-color: var(--paper) !important; }
+.text-slate-100, .text-white { color: var(--ink) !important; }
+.text-slate-200, .text-slate-300 { color: #3e4541 !important; }
+.text-slate-400 { color: var(--ink-soft) !important; }
+.text-slate-500, .text-slate-600 { color: var(--ink-muted) !important; }
+.border-slate-800, .border-slate-800\/80, .border-slate-800\/60,
+.border-slate-900, .border-slate-700\/60 { border-color: var(--line) !important; }
 
-  #resume-printable a {
-    color: #0369a1 !important;
-    text-decoration: underline !important;
-  }
+/* Header */
+header.fixed {
+  background: color-mix(in srgb, var(--paper) 94%, transparent) !important;
+  border-color: var(--line) !important;
+  box-shadow: 0 1px 0 rgba(32, 35, 34, .04) !important;
+  backdrop-filter: blur(14px);
+}
+header .max-w-7xl { max-width: 1440px; }
+header nav { background: transparent !important; border: 0 !important; backdrop-filter: none !important; }
+header nav a { color: var(--ink-soft) !important; border-radius: 2px !important; }
+header nav a:hover { color: var(--accent) !important; background: transparent !important; }
 
-  #resume-printable .resume-header {
-    border-bottom: 2px solid #0284c7 !important;
-  }
+/* Accent is used as a small signature, not a glow effect. */
+.text-cyan-400, .text-sky-400, .text-sky-300, .text-cyan-300,
+.text-teal-400, .text-teal-300 { color: var(--accent) !important; }
+.bg-sky-500\/10, .bg-cyan-500\/10, .bg-teal-500\/10,
+.bg-emerald-500\/10 { background: var(--accent-soft) !important; }
+.border-sky-500\/20, .border-sky-500\/30, .border-cyan-500\/20,
+.border-cyan-500\/30, .border-slate-800\/80 { border-color: var(--line) !important; }
 
-  #resume-printable .section-title {
-    color: #0284c7 !important;
-    border-bottom: 1px solid #cbd5e1 !important;
-    font-weight: 700 !important;
-  }
+section:not(#inicio) {
+  padding-block: clamp(4.5rem, 8vw, 8rem) !important;
+  border-top: 1px solid var(--line) !important;
+  background: transparent !important;
+}
+section:not(#inicio) > div:first-child { max-width: 1320px; }
+section:not(#inicio) > div > div:first-child {
+  align-items: flex-start !important;
+  text-align: left !important;
+  max-width: 760px !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  margin-bottom: clamp(2.25rem, 4vw, 3.75rem) !important;
+}
+section:not(#inicio) > div > div:first-child > div:first-child {
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--accent) !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  letter-spacing: .12em;
+}
+section:not(#inicio) h2 {
+  color: var(--ink) !important;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.3vw, 3.5rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: -.045em !important;
+  line-height: 1.06 !important;
+}
+section:not(#inicio) > div > div:first-child > p { max-width: 46rem; }
+
+#inicio {
+  min-height: min(850px, 100svh);
+  display: flex;
+  align-items: center;
+  padding-block: 8.5rem 5.5rem !important;
+  background: var(--paper) !important;
+}
+#inicio > div:first-of-type { display: none; }
+#inicio .max-w-7xl { max-width: 1440px; }
+#inicio h1 {
+  color: var(--ink) !important;
+  font-family: var(--serif);
+  font-size: clamp(4rem, 9vw, 8.5rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: -.075em !important;
+  line-height: .9 !important;
+}
+#inicio h2 {
+  max-width: 740px;
+  color: var(--ink-soft) !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  font-family: var(--sans);
+  font-size: clamp(1.2rem, 2.2vw, 1.85rem) !important;
+  font-weight: 450 !important;
+  letter-spacing: -.035em;
+  line-height: 1.35 !important;
+}
+#inicio p { color: var(--ink-soft) !important; }
+#inicio strong { color: var(--ink) !important; }
+#inicio .inline-flex.items-center.gap-2.px-3.py-1\.5 {
+  background: transparent !important;
+  border: 0 !important;
+  padding-inline: 0 !important;
+  color: var(--accent) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+#inicio .tech-tag {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  padding: .35rem .2rem;
+  font-family: var(--sans);
+}
+#inicio .tech-tag svg { color: var(--accent) !important; }
+#inicio h2.bg-gradient-to-r {
+  background: none !important;
+  color: var(--ink-soft) !important;
+  -webkit-text-fill-color: var(--ink-soft) !important;
+}
+#inicio a.bg-gradient-to-r {
+  background: var(--accent) !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+#inicio .rounded-xl, #inicio .rounded-2xl, #inicio .rounded-3xl { border-radius: 3px !important; }
+#inicio .glass-panel {
+  background: var(--paper-strong) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: 0 18px 50px rgba(32,35,34,.06) !important;
+  backdrop-filter: none !important;
+}
+#inicio .glass-panel > div:first-child { border-color: var(--line) !important; }
+#inicio .glass-panel .bg-slate-950\/80,
+#inicio .glass-panel .bg-slate-900\/60 {
+  background: var(--paper) !important;
+  border-color: var(--line) !important;
+}
+#inicio .glass-panel .text-slate-300 { color: var(--ink-soft) !important; }
+#inicio .glass-panel .text-slate-500, #inicio .glass-panel .text-slate-600 { color: var(--ink-muted) !important; }
+
+/* Replace repeated glass cards with restrained paper surfaces and hairlines. */
+.glass-panel {
+  background: var(--paper-strong) !important;
+  border-color: var(--line) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.glass-panel-hover { transition: border-color .2s ease, transform .2s ease !important; }
+.glass-panel-hover:hover { border-color: #9eaaa1 !important; transform: translateY(-2px); box-shadow: none !important; }
+.rounded-2xl { border-radius: 5px !important; }
+.rounded-xl { border-radius: 4px !important; }
+.rounded-lg { border-radius: 3px !important; }
+.shadow-xl, .shadow-2xl, .shadow-lg { box-shadow: none !important; }
+.bg-slate-900, .bg-slate-900\/80, .bg-slate-900\/60,
+.bg-slate-950, .bg-slate-950\/80 { background: #efeee8 !important; }
+
+/* Content-led, asymmetric section headers and quieter reading rhythm. */
+#sobre .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 { gap: 0 !important; border-top: 1px solid var(--line); }
+#sobre .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 > div {
+  padding: 1.5rem !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+}
+#experiencia .max-w-5xl { max-width: 100%; }
+#experiencia .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.25rem; }
+#experiencia .glass-panel { border-left: 2px solid var(--accent) !important; }
+#projetos .grid.grid-cols-1.md\:grid-cols-2 { gap: 1px !important; background: var(--line); border: 1px solid var(--line); }
+#projetos .grid.grid-cols-1.md\:grid-cols-2 > div { border: 0 !important; border-radius: 0 !important; }
+#projetos .grid.grid-cols-1.md\:grid-cols-2 > div:nth-child(4n + 1) { background: #eeeee6 !important; }
+#projetos .grid.grid-cols-1.md\:grid-cols-2 > div:nth-child(4n + 2) { background: #e9eee8 !important; }
+#projetos .grid.grid-cols-1.md\:grid-cols-2 > div:nth-child(4n + 3) { background: #f0ece3 !important; }
+#projetos .grid.grid-cols-1.md\:grid-cols-2 > div:nth-child(4n) { background: #e8ece8 !important; }
+#projetos .grid.grid-cols-1.md\:grid-cols-2 > div > div:last-child { padding-bottom: 1.75rem; }
+
+/* Tags are typographic metadata rather than pills. */
+.tech-tag, #projetos span, #experiencia span, #skills span,
+#ia-tools span, #formacao span {
+  border-radius: 2px !important;
+}
+#skills .grid > div, #ia-tools .grid > div, #formacao .grid > div {
+  border-radius: 3px !important;
+}
+#skills .grid > div { border-top: 1px solid var(--line) !important; }
+#skills .grid > div > div:first-child { border-bottom-color: var(--line) !important; }
+#ia-tools .max-w-4xl { background: var(--accent-soft) !important; border: 0 !important; color: var(--ink-soft) !important; }
+
+/* Contact panel and form keep their existing behavior and readable controls. */
+#contato input, #contato textarea {
+  background: var(--paper-strong) !important;
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+  border-radius: 3px !important;
+}
+#contato input::placeholder, #contato textarea::placeholder { color: #969b95 !important; }
+#contato input:focus, #contato textarea:focus { border-color: var(--accent) !important; }
+#contato button[type='submit'] { background: var(--accent) !important; color: white !important; box-shadow: none !important; }
+
+footer { background: #eae8e0 !important; border-color: var(--line) !important; }
+footer .border-b { border-color: var(--line) !important; }
+
+/* Accessible reduced motion and small-screen editorial reflow. */
+a, button { transition: color .18s ease, background-color .18s ease, border-color .18s ease, transform .18s ease !important; }
+a:hover { color: var(--accent); }
+button:hover { border-color: #9eaaa1; }
+
+@media (max-width: 1023px) {
+  #inicio { min-height: auto; }
+  #inicio .grid { align-items: start; }
+  #inicio .lg\:col-span-5 { justify-content: flex-start; }
+  #inicio .lg\:col-span-5 > div { max-width: 100%; }
+}
+
+@media (max-width: 640px) {
+  header .text-\[11px\] { display: none; }
+  #inicio { padding-top: 7.5rem !important; padding-bottom: 4rem !important; }
+  #inicio h1 { font-size: clamp(3.7rem, 18vw, 6rem) !important; }
+  #inicio .grid { gap: 2rem !important; }
+  section:not(#inicio) { padding-block: 4rem !important; }
+  section:not(#inicio) h2 { font-size: clamp(2.1rem, 11vw, 3rem) !important; }
+  #projetos .grid.grid-cols-1.md\:grid-cols-2 { grid-template-columns: minmax(0, 1fr); }
+  #sobre .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 > div { padding-inline: 0 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* Print stylesheet preserves the existing résumé modal output. */
+@media print {
+  @page { size: A4 portrait; margin: 10mm 14mm; }
+  header, footer, nav, main, #inicio, #sobre, #experiencia, #projetos, #ia-tools, #skills, #formacao, #contato { display: none !important; }
+  body { background: #fff !important; color: #111827 !important; font-size: 11pt; }
+  .no-print, button, .modal-backdrop { display: none !important; }
+  #resume-printable { display: block !important; position: static !important; width: 100% !important; max-width: 100% !important; background: #fff !important; color: #111827 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; border: none !important; }
+  #resume-printable * { color: #111827 !important; text-shadow: none !important; box-shadow: none !important; }
+  #resume-printable a { color: #0369a1 !important; text-decoration: underline !important; }
+  #resume-printable .resume-header { border-bottom: 2px solid #0284c7 !important; }
+  #resume-printable .section-title { color: #0284c7 !important; border-bottom: 1px solid #cbd5e1 !important; font-weight: 700 !important; }
 }
