@@ -32,14 +32,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResumeModal }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled
-          ? 'bg-[#090a0f]/90 backdrop-blur-md border-b border-[#232838] py-3.5 shadow-subtle'
-          : 'bg-transparent py-5'
+          ? 'bg-[#090a0f]/95 backdrop-blur-md border-b border-[#232838] py-3 shadow-subtle'
+          : 'bg-[#090a0f]/80 backdrop-blur-sm border-b border-[#1a1e2c] py-3.5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 lg:gap-6">
         
-        {/* Brand Identity */}
-        <a href="#inicio" className="flex items-center gap-3 group">
+        {/* 1. Brand Identity (Left) */}
+        <a href="#inicio" className="flex items-center gap-3 shrink-0 group">
           <div className="w-9 h-9 rounded-lg bg-[#141722] border border-[#232838] flex items-center justify-center text-zinc-300 group-hover:border-[#38bdf8] group-hover:text-white transition-colors">
             <Database className="w-4 h-4" />
           </div>
@@ -48,30 +48,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResumeModal }) => {
               Marcos Sousa
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500" title="Disponível para oportunidades" />
             </span>
-            <span className="text-[11px] font-mono text-zinc-400 tracking-normal">
-              Analista de Banco de Dados · Dev SQL/PL-SQL · Suporte N1/N2
+            {/* Subtitle with no-wrap and responsive breakpoint handling */}
+            <span className="text-[11px] font-mono text-zinc-400 tracking-normal whitespace-nowrap hidden sm:block">
+              <span className="xl:hidden">Analista de Banco de Dados · Suporte N1/N2</span>
+              <span className="hidden xl:inline">Analista de Banco de Dados · Dev SQL/PL-SQL · Suporte N1/N2</span>
             </span>
           </div>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1 bg-[#0f1118]/80 px-3 py-1.5 rounded-lg border border-[#232838] backdrop-blur-sm">
+        {/* 2. Desktop Navigation (Center - Integrated Spacing) */}
+        <nav className="hidden lg:flex items-center gap-1 shrink-0">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-xs font-medium text-zinc-400 hover:text-zinc-100 px-3 py-1.5 rounded-md hover:bg-[#181c28] transition-colors"
+              className="text-xs font-medium text-zinc-300 hover:text-white px-2.5 py-1.5 rounded-md hover:bg-[#161a26] transition-colors whitespace-nowrap"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        {/* Action Controls */}
-        <div className="hidden sm:flex items-center gap-2.5">
+        {/* 3. Action Controls (Right) */}
+        <div className="hidden sm:flex items-center gap-2.5 shrink-0">
           <button
             onClick={onOpenResumeModal}
-            className="flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-lg border border-[#232838] text-zinc-300 hover:text-white hover:border-[#3b4259] bg-[#0f1118] transition-colors"
+            className="flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-lg border border-[#232838] text-zinc-300 hover:text-white hover:border-[#3b4259] bg-[#0f1118] transition-colors whitespace-nowrap"
           >
             <FileText className="w-3.5 h-3.5 text-zinc-400" />
             <span>Currículo</span>
@@ -79,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResumeModal }) => {
           
           <a
             href="#contato"
-            className="flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg bg-zinc-100 text-zinc-950 hover:bg-white transition-all shadow-sm"
+            className="flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg bg-zinc-100 text-zinc-950 hover:bg-white transition-all shadow-sm whitespace-nowrap"
           >
             <Send className="w-3.5 h-3.5" />
             <span>Falar Comigo</span>

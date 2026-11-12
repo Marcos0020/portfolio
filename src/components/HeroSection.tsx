@@ -115,7 +115,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
 
           </div>
 
-          {/* Right Column: Architectural Systems Dossier */}
+          {/* Right Column: Architectural Systems Dossier with Real Photo */}
           <div className="lg:col-span-5 flex justify-center w-full">
             <div className="w-full max-w-md rounded-xl bg-[#0f1118] border border-[#232838] p-6 shadow-card">
               
@@ -131,10 +131,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
                 </div>
               </div>
 
-              {/* Identity Row */}
+              {/* Identity Row with Real Professional Photo */}
               <div className="py-5 flex items-center gap-4 border-b border-[#232838]">
-                <div className="w-13 h-13 rounded-lg bg-[#151824] border border-[#292f44] flex items-center justify-center font-mono font-bold text-lg text-zinc-200">
-                  MS
+                <div className="relative shrink-0">
+                  <img
+                    src="/marcos-sousa.jpg"
+                    alt="Marcos Sousa"
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover object-top border border-[#2e354a] shadow-md"
+                  />
+                  <span
+                    className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#0e1017]"
+                    title="Disponível para oportunidades"
+                  />
                 </div>
                 <div>
                   <h3 className="font-semibold text-base text-zinc-100">Marcos Sousa</h3>
