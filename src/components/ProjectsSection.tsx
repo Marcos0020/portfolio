@@ -15,35 +15,36 @@ export const ProjectsSection: React.FC = () => {
     : projects.filter((p: Project) => p.category === activeFilter);
 
   return (
-    <section id="projetos" className="py-24 relative bg-[#090a0f] border-t border-[#1e2333]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
-          <div className="section-badge mb-3.5">
-            <FolderGit2 className="w-3.5 h-3.5 text-zinc-400" />
-            <span>03 // PROJETOS & ENGENHARIA DE SOFTWARE</span>
+    <section id="projetos" className="py-20 relative bg-[#070b18]">
+      <div className="divider-navy" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+
+        {/* ── Cabeçalho + filtros ── */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <div className="section-badge mb-4 mx-auto">
+            <FolderGit2 className="w-3 h-3 text-blue-400" />
+            <span>03 // Projetos &amp; Engenharia de Software</span>
           </div>
-          
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-100 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Projetos Tecnológicos Independentes
           </h2>
-          
-          <p className="mt-4 text-zinc-400 text-sm sm:text-base leading-relaxed">
-            Soluções autorais desenvolvidas para resolver desafios reais de automação corporativa, integração de sistemas e sustentação de banco de dados. Códigos abertos no GitHub.
+          <p className="mt-4 text-slate-400 text-sm leading-relaxed">
+            Soluções autorais desenvolvidas para resolver desafios reais de automação corporativa,
+            integração de sistemas e sustentação de banco de dados. Códigos abertos no GitHub.
           </p>
         </div>
 
-        {/* Minimalist Filter Controls */}
-        <div className="flex flex-wrap justify-center gap-1.5 mb-12">
+        {/* Filtros */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveFilter(cat)}
-              className={`text-xs font-mono px-3.5 py-1.5 rounded-md transition-all ${
+              className={`text-xs font-mono px-4 py-2 rounded-xl transition-all ${
                 activeFilter === cat
-                  ? 'bg-zinc-100 text-zinc-950 font-semibold shadow-subtle'
-                  : 'bg-[#0f1118] text-zinc-400 border border-[#232838] hover:text-white hover:border-[#353d54]'
+                  ? 'bg-blue-600 text-white font-semibold shadow-blue-sm'
+                  : 'bg-[#0c1221] text-slate-400 border border-[#172042] hover:text-white hover:border-blue-500/30'
               }`}
             >
               {cat}
@@ -51,93 +52,71 @@ export const ProjectsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
+        {/* ── Grid de projetos ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredProjects.map((project: Project, idx: number) => (
             <div
               key={idx}
-              className="rounded-xl flex flex-col justify-between bg-[#0e1017] border border-[#232838] hover:border-[#353d54] transition-all shadow-subtle overflow-hidden group"
+              className="panel flex flex-col overflow-hidden hover:border-blue-500/20 transition-all hover-lift group"
             >
-              <div className="p-6 sm:p-7">
-                
-                {/* Meta Badges */}
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-[#141722] border border-[#232838] text-zinc-300">
-                    {project.category}
+              {/* Header com categoria */}
+              <div className="flex items-center justify-between px-6 py-3 border-b border-[#172042] bg-[#0a0f1e]">
+                <span className="font-mono text-[10px] text-blue-400 uppercase tracking-[0.14em]">
+                  {project.category}
+                </span>
+                {project.highlightBadge && (
+                  <span className="flex items-center gap-1 text-[10px] font-mono text-amber-400/80">
+                    <Sparkles className="w-2.5 h-2.5" /> {project.highlightBadge}
                   </span>
-                  
-                  {project.highlightBadge && (
-                    <span className="text-[10px] font-mono text-zinc-400 bg-[#161a26] border border-[#232838] px-2 py-0.5 rounded flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-amber-400/90" /> {project.highlightBadge}
-                    </span>
-                  )}
-                </div>
+                )}
+              </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-bold text-white tracking-tight leading-snug">
-                  {project.title}
-                </h3>
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl font-bold text-white tracking-tight leading-snug">{project.title}</h3>
+                <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">{project.description}</p>
 
-                {/* Description */}
-                <p className="mt-3 text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Problem Solved Callout */}
-                <div className="my-5 p-4 rounded-lg bg-[#121520] border border-[#202534]">
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 font-medium mb-1.5 flex items-center gap-1.5">
-                    <Layers className="w-3.5 h-3.5 text-zinc-400" />
-                    <span>Problema que Resolve:</span>
+                {/* Problema */}
+                <div className="my-5 p-4 rounded-xl bg-[#0a0f1e] border border-[#172042]">
+                  <div className="text-[11px] font-mono uppercase tracking-[0.12em] text-blue-400/70 font-medium mb-1.5 flex items-center gap-1.5">
+                    <Layers className="w-3.5 h-3.5" /> Problema que Resolve:
                   </div>
-                  <p className="text-xs text-zinc-300 leading-relaxed">
-                    {project.problemSolved}
-                  </p>
+                  <p className="text-xs text-slate-300 leading-relaxed">{project.problemSolved}</p>
                 </div>
 
-                {/* Features List */}
-                <div className="mt-4">
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 mb-2.5">
+                {/* Features */}
+                <div className="mb-5 flex-1">
+                  <div className="text-[11px] font-mono uppercase tracking-[0.12em] text-blue-400/70 mb-2.5">
                     Funcionalidades Implementadas:
                   </div>
                   <ul className="space-y-2">
                     {project.features.map((feat: string, fIdx: number) => (
-                      <li key={fIdx} className="flex items-start gap-2 text-xs text-zinc-300 leading-relaxed">
-                        <CheckCircle className="w-3.5 h-3.5 text-emerald-500/80 shrink-0 mt-0.5" />
+                      <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed">
+                        <CheckCircle className="w-3.5 h-3.5 text-blue-500/70 shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-              </div>
-
-              {/* Card Footer: Tech Tags & GitHub Link */}
-              <div className="p-6 pt-0">
-                <div className="pt-4 border-t border-[#1d2230] flex flex-wrap gap-1.5 mb-5">
-                  {project.technologies.map((tech: string, tIdx: number) => (
-                    <span
-                      key={tIdx}
-                      className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#131622] border border-[#202534] text-zinc-400"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-3">
+                {/* Footer: tech + GitHub */}
+                <div className="pt-4 border-t border-[#172042]">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.technologies.map((tech: string, tIdx: number) => (
+                      <span key={tIdx} className="tech-tag">{tech}</span>
+                    ))}
+                  </div>
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-[#141722] border border-[#272f44] text-zinc-200 text-xs font-semibold hover:bg-[#1a1e2c] hover:border-zinc-400 transition-all"
+                    className="inline-flex items-center gap-2 py-2 px-4 rounded-xl bg-[#0e1628] border border-[#172042] text-slate-200 text-xs font-semibold hover:border-blue-500/40 hover:bg-[#111a30] transition-all"
                   >
                     <GithubIcon className="w-4 h-4" />
                     <span>Ver no GitHub</span>
-                    <ExternalLink className="w-3 h-3 text-zinc-400 ml-0.5" />
+                    <ExternalLink className="w-3 h-3 text-slate-500" />
                   </a>
                 </div>
               </div>
-
             </div>
           ))}
         </div>

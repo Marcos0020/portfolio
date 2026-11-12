@@ -15,7 +15,7 @@ export function App() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-zinc-100 font-sans selection:bg-zinc-200 selection:text-zinc-950 antialiased">
+    <div className="min-h-screen bg-navy-900 text-slate-200 font-sans antialiased">
       <Navbar onOpenResumeModal={() => setResumeModalOpen(true)} />
       <main>
         <HeroSection onOpenResumeModal={() => setResumeModalOpen(true)} />
