@@ -85,23 +85,6 @@ export const AboutSection: React.FC = () => {
           {/* Right Column: Structured Educational & Operational Modules */}
           <div className="lg:col-span-5 flex flex-col gap-4">
             
-            {/* Profile Overview Card with Photo */}
-            <div className="rounded-xl p-5 bg-[#0e1017] border border-[#232838] flex items-center gap-4">
-              <img
-                src="/marcos-sousa.jpg"
-                alt="Marcos Sousa"
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover object-top border border-[#282f42] shrink-0 shadow-sm"
-              />
-              <div>
-                <h4 className="text-sm font-semibold text-white">Marcos Vinicius dos Santos Sousa</h4>
-                <p className="text-xs text-zinc-400 font-mono">Analista de Banco de Dados & Suporte N1/N2</p>
-                <p className="text-[11px] text-emerald-400 font-mono mt-1 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  <span>Disponível para Oportunidades</span>
-                </p>
-              </div>
-            </div>
-
             {/* Academic Module */}
             <div className="rounded-xl p-5 bg-[#0e1017] border border-[#232838]">
               <div className="flex items-center gap-2.5 mb-3 text-zinc-200">
